@@ -1,8 +1,5 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef } from "react";
 import "../css/JobOpenings.css";
-import ResumeForm from "./ResumeForm";
-
-// Import icons from react-icons
 import { FaPaintBrush, FaUserAlt, FaPhp, FaMagento, FaApple, FaAndroid, FaAngular, FaClipboardCheck } from "react-icons/fa";
 
 const JobOpenings = () => {
@@ -18,7 +15,6 @@ const JobOpenings = () => {
   ];
 
   const cardRefs = useRef([]);
-  const [showForm, setShowForm] = useState(false);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -67,22 +63,12 @@ const JobOpenings = () => {
             <h3>{job.title}</h3>
             <p>Exp. {job.exp}</p>
             <p>No. of Vacancies: {job.vacancies}</p>
-            <button className="apply-btn" onClick={() => setShowForm(true)}>
+            <button className="apply-btn">
               Apply Now
             </button>
           </div>
         ))}
       </div>
-
-      {/* Render ResumeForm when showForm is true */}
-      {showForm && (
-        <div className="resume-overlay">
-          <div className="resume-container">
-            <button className="close-btn" onClick={() => setShowForm(false)}>Close</button>
-            <ResumeForm />
-          </div>
-        </div>
-      )}
     </section>
   );
 };

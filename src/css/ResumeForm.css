@@ -1,3 +1,6 @@
+/* ---------------------- */
+/* Resume Section - Base */
+/* ---------------------- */
 .resume-section {
   display: flex;
   flex-wrap: wrap;
@@ -9,10 +12,12 @@
   gap: 40px;
 }
 
+/* Left Side */
 .resume-left {
   flex: 1;
   min-width: 300px;
   max-width: 500px;
+  text-align: left;
 }
 
 .resume-left h2 {
@@ -27,6 +32,7 @@
   color: #ffffff;
 }
 
+/* Right Side Form */
 .resume-right {
   flex: 1;
   min-width: 320px;
@@ -35,6 +41,7 @@
   border-radius: 12px;
   padding: 30px;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+  text-align: left;
 }
 
 .resume-right h3 {
@@ -49,6 +56,9 @@
   margin-bottom: 20px;
 }
 
+/* ---------------------- */
+/* Form Styling */
+/* ---------------------- */
 .resume-form {
   display: flex;
   flex-direction: column;
@@ -67,10 +77,11 @@
 .resume-form input,
 .resume-form select,
 .resume-form textarea {
+  width: 100%;
   padding: 12px 14px;
+  font-size: 14px;
   border: 1px solid #ccc;
   border-radius: 6px;
-  font-size: 14px;
   outline: none;
   transition: 0.3s ease;
 }
@@ -96,40 +107,72 @@
 
 .resume-form button:hover {
   background: #3f2b96;
-  color: #fff;
 }
 
+/* ---------------------- */
+/* Responsive - Tablet */
+/* ---------------------- */
+@media (max-width: 992px) {
+  .resume-section {
+    flex-direction: column;
+    padding: 40px 20px;
+    gap: 30px;
+  }
 
-.resume-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0,0,0,0.5);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 999;
+  .resume-left,
+  .resume-right {
+    max-width: 100%;
+    text-align: center;
+  }
+
+  .resume-left h2 {
+    font-size: 28px;
+  }
+
+  .resume-right {
+    padding: 20px;
+  }
+
+  .form-row {
+    flex-direction: column;
+  }
 }
 
-.resume-container {
-  background: #fff;
-  border-radius: 10px;
-  width: 90%;
-  max-width: 900px;
-  padding: 20px;
-  position: relative;
-}
+/* ---------------------- */
+/* Responsive - Mobile */
+/* ---------------------- */
+@media (max-width: 600px) {
+  .resume-section {
+    padding: 30px 15px;
+  }
 
-.close-btn {
-  position: absolute;
-  top: 10px;
-  right: 15px;
-  background: #ff4d4f;
-  color: #fff;
-  border: none;
-  padding: 6px 12px;
-  border-radius: 5px;
-  cursor: pointer;
+  .resume-left h2 {
+    font-size: 24px;
+  }
+
+  .resume-left p {
+    font-size: 14px;
+  }
+
+  .resume-right h3 {
+    font-size: 20px;
+  }
+
+  .resume-right .subtext {
+    font-size: 12px;
+  }
+
+  .resume-form input,
+  .resume-form select,
+  .resume-form textarea,
+  .resume-form button {
+    font-size: 13px;
+    padding: 10px;
+    width: 100%;
+  }
+
+  .form-row {
+    flex-direction: column;
+    gap: 12px;
+  }
 }

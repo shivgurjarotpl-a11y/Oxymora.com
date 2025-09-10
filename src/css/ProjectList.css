@@ -1,0 +1,197 @@
+/* Grid layout */
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+  grid-auto-rows: 1fr; /* equal height */
+}
+
+/* Card */
+.project-card {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  height: 100%;       /* fill grid cell */
+  min-height: 260px;  /* base uniform height */
+  background: linear-gradient(to bottom, #cfeff6, #bcdfe6);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+  transition: transform 0.28s ease, box-shadow 0.28s ease;
+  z-index: 0;
+}
+
+/* Hover overlay */
+.project-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 30%, #364a60, #2b3b4a 60%);
+  transform-origin: 100% 0%;
+  transform: scale(0.01);
+  transition: transform 0.6s cubic-bezier(.22, 1, .36, 1), opacity 0.4s ease;
+  z-index: 0;
+  pointer-events: none;
+}
+.project-card:hover::before {
+  transform: scale(50);
+  opacity: 1;
+}
+
+/* Image */
+.project-card-image {
+  flex: 0 0 200px;
+  height: 100%;
+}
+.project-card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Content */
+.project-card-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 18px;
+  z-index: 1;
+}
+.project-card-title {
+  margin: 0 0 8px 0;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #1f2a33;
+  transition: color 0.35s ease;
+}
+.project-card-desc {
+  margin: 0 0 12px 0;
+  color: #3d2f2f;
+  line-height: 1.45;
+  transition: color 0.35s ease;
+}
+
+/* Button */
+.project-learn-btn {
+  align-self: flex-start;
+  padding: 10px 16px;
+  background: rgba(54,74,96,0.95);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.15s ease, background 0.25s ease;
+}
+.project-learn-btn:hover { transform: translateY(-3px); }
+
+/* Corner arrow */
+.project-go-corner {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 2.1em;
+  height: 2.1em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 3;
+}
+.project-go-arrow {
+  color: #fff;
+  font-family: courier, monospace;
+  font-weight: 700;
+  transform: translateY(-4px);
+  transition: transform 0.22s ease;
+}
+.project-card:hover .project-go-arrow { transform: translateX(6px) translateY(-4px); }
+
+/* Hover text color */
+.project-card:hover .project-card-title,
+.project-card:hover .project-card-desc,
+.project-card:hover .project-learn-btn {
+  color: #fff;
+}
+.project-card:hover .project-learn-btn {
+  background: rgba(255,255,255,0.12);
+}
+
+/* Lift */
+.project-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 18px 36px rgba(0,0,0,0.22);
+}
+
+/* Modal */
+.project-modal-overlay {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0,0,0,0.72);
+  z-index: 9999;
+  padding: 20px;
+}
+.project-modal {
+  background: #fff;
+  border-radius: 12px;
+  padding: 20px;
+  max-width: 900px;
+  width: 100%;
+  max-height: 92vh;
+  overflow-y: auto;
+  position: relative;
+  box-shadow: 0 18px 45px rgba(0,0,0,0.4);
+  z-index: 10000;
+}
+.project-modal-image {
+  width: 100%;
+  max-height: 420px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 16px;
+}
+.project-modal-title {
+  margin: 0 0 10px 0;
+  color: #364a60;
+  font-size: 1.6rem;
+}
+.project-modal-desc {
+  color: #333;
+  line-height: 1.6;
+  margin-bottom: 16px;
+}
+.project-modal-close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: transparent;
+  border: none;
+  font-size: 1.6rem;
+  cursor: pointer;
+  color: #364a60;
+  transition: transform 0.15s ease;
+}
+.project-modal-close:hover { transform: scale(1.15); }
+
+/* Responsive */
+@media (max-width: 720px) {
+  .project-card {
+    flex-direction: column;
+    height: auto;
+  }
+  .project-card-image {
+    width: 100%;
+    flex: none;
+    height: 200px;
+  }
+  .project-card-content { padding: 14px; text-align: center; }
+  .project-learn-btn { width: 100%; margin-top: 8px; }
+  .project-card:hover::before { transform: scale(25); }
+}
