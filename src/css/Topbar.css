@@ -44,7 +44,7 @@
   color: #2563eb;
 }
 
-/* Dropdown */
+/* ===== Dropdown Base ===== */
 .dropdown {
   position: relative;
 }
@@ -53,41 +53,82 @@
   position: absolute;
   top: 100%;
   left: 0;
-  background: #fff;
-  border: 1px solid #e5e7eb;
-  border-radius: 6px;
-  padding: 0.75rem 1rem;
-  display: none;
-  flex-direction: column;
-  min-width: 180px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  z-index: 100;
-}
-
-.dropdown.active .dropdown-content {
+  background: #ffffff;
+  border-radius: 8px;
+  padding: 1rem 1.25rem;
+  min-width: 220px;
   display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+
+  /* Hide by default */
+  opacity: 0;
+  transform: translateY(12px);
+  visibility: hidden;
+  transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
+  z-index: 999;
 }
 
-/* Submenu */
+/* Show on hover (desktop only) */
+@media (min-width: 769px) {
+  .dropdown:hover .dropdown-content {
+    opacity: 1;
+    transform: translateY(0);
+    visibility: visible;
+  }
+}
+
+/* Also works when clicked (mobile or forced open) */
+.dropdown.active .dropdown-content {
+  opacity: 1;
+  transform: translateY(0);
+  visibility: visible;
+}
+
+/* ===== Submenu Styling ===== */
 .submenu {
   margin-bottom: 0.75rem;
 }
+
 .submenu span {
   font-size: 0.85rem;
   font-weight: 600;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.4rem;
   display: block;
   color: #6b7280;
 }
+
 .submenu a {
   display: block;
-  padding: 0.3rem 0;
+  padding: 0.35rem 0.5rem;
+  border-radius: 6px;
   color: #374151;
-  font-size: 0.9rem;
+  font-size: 0.92rem;
+  transition: all 0.2s ease;
 }
+
 .submenu a:hover {
+  background: #f3f4f6;
   color: #2563eb;
+  padding-left: 0.75rem;
 }
+
+/* ===== Mega Menu Support ===== */
+.dropdown.mega .dropdown-content {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+  min-width: 400px;
+  padding: 1.25rem 1.5rem;
+}
+
+/* ===== Prevent cut-off on last item ===== */
+.dropdown:last-child .dropdown-content {
+  left: auto;
+  right: 0;
+}
+
 
 /* Hamburger */
 .topbar-toggle {
