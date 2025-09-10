@@ -1,0 +1,6 @@
+.Core-contanior{
+  position: relative;
+  z-index: 1;
+  padding-top: calc(700px);
+
+}

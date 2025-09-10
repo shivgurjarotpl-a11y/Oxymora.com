@@ -1,0 +1,22 @@
+.category-section-container {
+  padding: 20px;
+  background: linear-gradient(to right, #071a3d, #003e7d);
+  /* position: relative; */
+}
+
+.category-section-heading {
+  font-size: 2rem;
+  margin: 20px 0;
+  text-align: center;
+  color: #ffffff;
+}
+
+.category-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+}
+
+.category-section {
+  margin-bottom: 40px; /* added spacing between sections */
+}

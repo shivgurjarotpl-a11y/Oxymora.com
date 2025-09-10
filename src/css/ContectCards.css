@@ -1,0 +1,283 @@
+/* ------------------ Heading Section ------------------ */
+.contact-heading {
+  color: white;
+  margin: 0 auto;
+  text-align: center;
+  padding: 20px;
+  background: linear-gradient(to right, #071a3d, #003e7d);
+}
+
+.contact-heading h2 {
+  margin-bottom: 30px;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+/* ------------------ Cards Container ------------------ */
+.contact-cards-container {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  padding: 30px;
+  background: linear-gradient(to right, #071a3d, #003e7d);
+  flex-wrap: nowrap;
+}
+
+.contact-card {
+  background: linear-gradient(to bottom right, #2196f3, #0d47a1);
+  padding: 20px;
+  width: 100%;
+  max-width: 390px;
+  height: 220px;
+  border-radius: 12px;
+  color: white;
+  position: relative;
+  transition: all 0.4s ease;
+  overflow: hidden;
+}
+
+.contact-card:hover {
+  transform: translateY(-10px) scale(1.03);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+}
+
+.contact-card h3 {
+  font-size: 26px;
+  font-weight: bold;
+  margin-bottom: 12px;
+  letter-spacing: 0.5px;
+}
+
+.contact-card p {
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.contact-card .contact-go-to {
+  position: absolute;
+  right: 20px;
+  bottom: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+  transition: transform 0.3s ease, background 0.3s ease;
+  color: white;
+  font-size: 18px;
+}
+
+.contact-card .contact-go-to:hover {
+  background: rgba(255, 255, 255, 0.4);
+  transform: scale(1.1);
+}
+
+.contact-card .contact-go-to.contact-active {
+  transform: rotate(90deg);
+}
+
+.contact-card::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0%;
+  height: 3px;
+  background: red;
+  transition: width 0.5s ease;
+}
+
+.contact-card:hover::after {
+  width: 100%;
+}
+
+/* ------------------ Expanded Form Section ------------------ */
+.contact-form-container {
+  width: 100%;
+  background: linear-gradient(to right, #071a3d, #003e7d);
+  padding: 30px;
+  box-shadow: 10px 10px 20px rgb(160, 138, 138);
+  animation: slideDown 0.6s ease;
+}
+
+.contact-form-container h2 {
+  margin-bottom: 20px;
+  color: #f4f6f8;
+  font-size: 22px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.contact-form-container .contact-form-p {
+  margin-bottom: 20px;
+  color: #f4f6f8;
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.contact-grid-form {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.contact-form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.contact-form-group.contact-full-width {
+  grid-column: 1 / -1;
+}
+
+.contact-spacer {
+  display: block;
+}
+
+.contact-form-group label {
+  margin-bottom: 6px;
+  font-weight: bold;
+  color: #ffffff;
+}
+
+.contact-form-group input,
+.contact-form-group select,
+.contact-form-group textarea {
+  padding: 12px;
+  border: 1px solid #2196f3;
+  border-radius: 8px;
+  outline: none;
+  font-size: 15px;
+  background: white;
+  color: #333;
+  transition: all 0.3s ease;
+}
+
+.contact-form-group input:focus,
+.contact-form-group select:focus,
+.contact-form-group textarea:focus {
+  border-color: #0d47a1;
+  box-shadow: 0 0 6px rgba(13, 71, 161, 0.3);
+}
+
+.contact-form-group textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+.contact-submit-btn {
+  padding: 12px 20px;
+  background: linear-gradient(to right, #2196f3, #0d47a1);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.contact-submit-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* ------------------ Team Section ------------------ */
+.contact-team-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  
+  margin-top: 20px;
+}
+
+.contact-team-card {
+  background: linear-gradient(to bottom right, #2196f3, #0d47a1);
+  color: #ffffff;
+  border-radius: 12px;
+  padding: 15px;
+  text-align: center;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+.contact-team-card img {
+  width: 100px;
+  height: 100px;
+  margin-left: 42%;
+  border-radius: 50%;
+  margin-bottom: 10px;
+  transition: all 0.3s ease;
+}
+
+.contact-team-card img:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+}
+
+/* ------------------ Animations ------------------ */
+.contact-animate-card {
+  opacity: 0;
+  transform: translateY(50px);
+  animation: fadeUp 0.6s ease forwards;
+}
+
+.contact-animate-team {
+  opacity: 0;
+  transform: scale(0.9);
+  animation: scaleFade 0.5s ease forwards;
+}
+
+.contact-animate-slide {
+  opacity: 0;
+  transform: translateY(30px);
+  animation: slideIn 0.5s ease forwards;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(50px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes scaleFade {
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes slideIn {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-50px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ------------------ Responsive ------------------ */
+@media (max-width: 1024px) {
+  .contact-card h3 { font-size: 24px; }
+  .contact-card p { font-size: 15px; }
+}
+
+@media (max-width: 568px) {
+  .contact-cards-container { flex-direction: column; gap: 15px; padding: 20px; }
+  .contact-card { width: 100%; max-width: 100%; height: auto; padding: 18px; }
+  .contact-card h3 { font-size: 22px; }
+  .contact-card p { font-size: 14px; }
+  .contact-card .contact-go-to { width: 36px; height: 36px; font-size: 16px; }
+  .contact-grid-form { grid-template-columns: 1fr; }
+  .contact-team-grid { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 480px) {
+  .contact-card h3 { font-size: 20px; }
+  .contact-card p { font-size: 13px; }
+  .contact-card .contact-go-to { width: 32px; height: 32px; font-size: 14px; }
+  .contact-heading h2 { font-size: 16px; }
+  .contact-form-container h2 { font-size: 20px; }
+  .contact-form-container .contact-form-p { font-size: 18px; }
+}

@@ -1,0 +1,186 @@
+.slideshow {
+  margin: 0px;
+  padding: 0px;
+  width: 100%;
+  height: 700px;
+  overflow: hidden;
+  position:fixed;
+   z-index: 0;
+}
+
+.slide img,
+.slide video {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.overlay-text {
+  position: absolute;
+  bottom: 40%;
+  width: 100%;
+  text-align: center;
+  color: white;
+  font-size: 4rem;
+  font-family: "Funnel Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: bold;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  padding: 0 20px;
+}
+.animated-text {
+  display: inline-block;
+}
+
+.fade-char {
+  opacity: 0;
+  animation: fadeIn 2.5s forwards;
+  display: inline-block;
+}
+
+
+.more-btn {
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: 500;
+  color: #003366;
+  background-color: #e0ecff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.more-btn:hover {
+  background-color: #c1d8ff;
+  transform: translateY(-2px);
+}
+
+.more-btn:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.2);
+  transform: skewX(-20deg);
+  transition: left 0.6s ease-in-out;
+}
+
+.more-btn:hover::before {
+  left: 130%;
+}
+
+.arrow-icon {
+  display: inline-block;
+  font-size: 1rem;
+}
+
+.second-animation .fade-char {
+  animation-name: zoomFadeIn;
+  animation-duration: 0.7s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes fadeInChar {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes zoomFadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.slide-indicators {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 10px;
+  z-index: 10;
+}
+
+.dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.dot:hover {
+  transform: scale(1.2);
+}
+
+.dot.active {
+  background: rgba(255, 255, 255, 1);
+}
+
+.overlay-text .fade-char {
+  animation: fadeIn 0.5s forwards;
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.scroll-reveal.revealed {
+  animation: bounceUp 0.7s ease forwards;
+}
+
+@keyframes bounceUp {
+  0% {
+    opacity: 0;
+    transform: translateY(60px);
+  }
+  60% {
+    transform: translateY(-10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes btnUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

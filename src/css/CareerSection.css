@@ -1,0 +1,87 @@
+.career-section {
+  padding: 60px 20px;
+  text-align: center;
+  background:#F9FAFB;
+}
+
+.career-heading {
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  color: linear-gradient(to bottom right, #2196f3, #0d47a1);
+}
+
+.career-subtext {
+  max-width: 850px;
+  margin: 0 auto 40px;
+  color: #111827;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.career-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 25px;
+  max-width: 1100px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.career-card {
+    background: linear-gradient(to bottom right, #2196f3, #0d47a1);
+  border-radius: 12px;
+  padding: 25px;
+  transition: 0.3s ease;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+.career-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.15);
+}
+
+.career-card .icon {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 15px;
+  font-size: 32px;
+  color: #ffffff;
+  background: #003e7d; /* default bg */
+  transition: 0.3s ease;
+}
+.career-card:nth-child(1) .icon {
+  background: #ff9800; /* Growth Opportunity */
+}
+
+.career-card:nth-child(2) .icon {
+  background: #4caf50; /* Bonuses */
+}
+
+.career-card:nth-child(3) .icon {
+  background: #2196f3; /* Community Partner */
+}
+
+
+/* Hover effect: color invert */
+.career-card:hover .icon {
+  background: #071a3d;
+  transform: scale(1.05);
+}
+
+.career-card h3 {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 12px;
+  color: #ffffff;
+}
+
+.career-card p {
+  font-size: 14px;
+  color: #ffffff;
+  line-height: 1.5;
+}

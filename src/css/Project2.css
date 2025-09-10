@@ -1,0 +1,136 @@
+.project2-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 60px 8%;
+  gap: 40px;
+  background: #00def0;
+  flex-wrap: wrap;
+}
+
+.project2-left {
+  flex: 1;
+  color: #fff;
+  max-width: 500px;
+}
+
+.project2-logo-circle {
+  width: 80px;
+  height: 80px;
+  background: #fff;
+  color: #000;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.project2-left h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+.project2-left p {
+  line-height: 1.6;
+  margin-bottom: 30px;
+  font-size: 15px;
+}
+
+.project2-stats {
+  display: flex;
+  gap: 30px;
+  margin-bottom: 30px;
+}
+
+.project2-stats h3 {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.project2-stats p {
+  font-size: 14px;
+}
+
+.project2-buttons {
+  display: flex;
+  gap: 15px;
+}
+
+.project2-btn-primary {
+  background: #fff;
+  color: #f98c3e;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.project2-btn-primary:hover {
+  background: #f0f0f0;
+}
+
+.project2-btn-secondary {
+  background: transparent;
+  border: 2px solid #fff;
+  color: #fff;
+  padding: 12px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.project2-btn-secondary:hover {
+  background: #fff;
+  color: #f98c3e;
+}
+
+.project2-right {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 500px;
+}
+
+.project2-phone-img {
+  max-width: 300px;
+  width: 100%;
+}
+
+/* ✅ Animation states */
+.project2-hidden-left {
+  opacity: 0;
+  transform: translateX(100px);
+  transition: all 2.8s ease;
+}
+
+.project2-hidden-bottom {
+  opacity: 0;
+  transform: translateY(100px);
+  transition: all 2.8s ease;
+}
+
+.project2-animate {
+  opacity: 1;
+  transform: translate(0, 0);
+}
+
+/* ✅ Responsive */
+@media (max-width: 992px) {
+  .project2-wrapper {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .project2-stats {
+    justify-content: center;
+  }
+
+  .project2-buttons {
+    justify-content: center;
+  }
+}

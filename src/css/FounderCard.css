@@ -1,0 +1,64 @@
+.founder-card {
+  width: 100%;
+  padding: 20px;
+  background: linear-gradient(to right, #071a3d, #003e7d);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+  color: white;
+
+  /* Initial hidden state */
+  opacity: 0;
+  transform: translateY(50px);
+  transition: all 0.8s ease-out;
+}
+
+.founder-card.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
+.founder-heading {
+  font-size: 22px;
+  font-weight: bold;
+  color: #b22222;
+  border-bottom: 2px solid #ddd;
+  padding-bottom: 8px;
+  margin-bottom: 20px;
+}
+
+.founder-content {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.founder-image img {
+  width: 320px;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+.founder-info {
+  flex: 1;
+  min-width: 300px;
+}
+
+.founder-name {
+  font-size: 24px;
+  color: #ffffff;
+  margin-bottom: 5px;
+}
+
+.founder-position {
+  font-weight: 600;
+  color: #ffffff;
+  margin-bottom: 15px;
+  line-height: 1.4;
+}
+
+.founder-desc {
+  font-size: 15px;
+  color: #b9b7b7;
+  margin-bottom: 12px;
+  line-height: 1.6;
+}

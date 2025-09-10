@@ -1,0 +1,291 @@
+/* Showcase Layout */
+.showcase {
+  display: flex;
+  padding: 40px;
+  gap: 20px;
+  width: 100%;
+  background: linear-gradient(to right, #071a3d, #003e7d);
+  color: white;
+  flex-wrap: nowrap;
+  align-items: flex-start;
+  overflow-x: auto;
+  position: relative;
+  z-index: 1;
+   font-family: "Funnel Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+/* Left Side Content */
+.showcase-left {
+  flex: 1;
+  width: 300px;
+  height: 350px;
+  margin-top: 80px;
+}
+
+.showcase-left h2 {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.showcase-left p {
+  line-height: 1.6;
+  margin-bottom: 20px;
+  font-size: 1rem;
+}
+
+.showcase-btn {
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: 500;
+  color: #003366;
+  background-color: #e0ecff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Hover effect for button */
+.showcase-btn:hover {
+  background-color: #c1d8ff;
+  transform: translateY(-2px);
+}
+
+/* Shine effect */
+.showcase-btn::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.2);
+  transform: skewX(-20deg);
+  transition: left 0.6s ease-in-out;
+}
+
+.showcase-btn:hover::before {
+  left: 130%;
+}
+
+/* Arrow icon animation */
+.showcase-btn-icon {
+  display: inline-block;
+  transition: transform 0.3s ease;
+}
+
+.showcase-btn:hover .showcase-btn-icon {
+  transform: translateX(6px);
+}
+
+/* Horizontal Scroll Layout */
+.showcase-scroll-container {
+  position: relative;
+  flex: 2;
+  overflow: hidden;
+}
+
+.showcase-card-row {
+  width: 100%;
+  display: flex;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-behavior: smooth;
+  gap: 20px;
+  padding-bottom: 10px;
+  margin-top: 80px;
+  scrollbar-width: none; /* Firefox */
+}
+
+.showcase-card-row::-webkit-scrollbar {
+  display: none; /* Chrome, Safari */
+}
+
+/* Scroll Buttons */
+.showcase-scroll-btn {
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(6px);
+  color: #fff;
+  border: 1px solid #fff;
+  padding: 10px 15px;
+  font-size: 20px;
+  cursor: pointer;
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  transition: background 0.3s ease;
+}
+
+.showcase-scroll-btn:hover {
+  background: #e53935;
+}
+
+.showcase-scroll-btn.left {
+  left: 10px;
+}
+
+.showcase-scroll-btn.right {
+  right: 10px;
+}
+
+/* Animated Showcase Cards */
+.showcase-card {
+  flex: 0 0 280px;
+  max-width: 90vw;
+  height: 320px;
+  overflow: hidden;
+  transform: translateY(50px);
+  opacity: 0;
+  transition: transform 0.6s ease, opacity 0.6s ease;
+  position: relative;
+}
+
+.showcase-card.animate-on-scroll.show {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.showcase-card::after {
+  content: "";
+  position: absolute;
+  bottom: -1px;
+  left: 50%;
+  transform: translateX(-50%) scaleX(0);
+  width: 90%;
+  height: 3px;
+  background-color: #e53935;
+  transition: transform 0.5s ease;
+  transform-origin: center;
+}
+
+.showcase-card:hover::after {
+  transform: translateX(-50%) scaleX(1);
+}
+
+.showcase-photo-container {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+}
+
+.showcase-photo-container img {
+  width: 100%;
+  height: 100%;
+  border-radius: 0;
+  object-fit: cover;
+  transition: transform 0.5s ease, height 0.5s ease;
+}
+
+.showcase-overlay {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.65);
+  color: white;
+  padding: 20px;
+  transform: translateY(100%);
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.4s ease;
+  text-align: center;
+  font-size: 1rem;
+}
+
+.showcase-text {
+  text-align: center;
+  margin-top: 5px;
+  transition: all 0.3s ease;
+  font-weight: bold;
+  font-size: 1rem;
+}
+
+/* Hover Effects */
+.showcase-card:hover .showcase-overlay {
+  transform: translateY(0);
+  opacity: 1;
+  visibility: visible;
+}
+
+.showcase-card:hover .showcase-text {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.showcase-card:hover .showcase-photo-container img {
+  transform: scale(1.05);
+}
+
+/* Animation styles */
+.showcase-card .showcase-text,
+.showcase-card .showcase-overlay {
+  transition: transform 0.6s ease, opacity 0.6s ease;
+}
+
+/* When animated */
+.animate-text {
+  animation: slideUpText 0.6s ease forwards;
+}
+
+@keyframes slideUpText {
+  from {
+    transform: translateY(30px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInOverlay {
+  from {
+    transform: scale(0.95);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Responsive Fixes */
+@media (max-width: 992px) {
+  .showcase {
+    flex-direction: column;
+    padding: 20px;
+  }
+  .showcase-left {
+    margin-top: 20px;
+    width: 100%;
+    text-align: center;
+    height: auto;
+  }
+  .showcase-card-row {
+    margin-top: 30px;
+  }
+}
+
+@media (max-width: 576px) {
+  .showcase-card {
+    flex: 0 0 240px;
+    height: 280px;
+  }
+  .showcase-photo-container img {
+    height: 100%;
+  }
+  .showcase-left h2 {
+    font-size: 1.8rem;
+  }
+  .showcase-left p {
+    font-size: 0.9rem;
+  }
+}

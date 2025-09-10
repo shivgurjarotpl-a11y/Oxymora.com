@@ -1,0 +1,64 @@
+.Career-Container {
+  height: 700px; /* responsive height */
+  width: 100%;
+  background-image: url("/image/software design.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: white;
+  
+  position: fixed; /* better than fixed */
+  z-index: 0;
+
+
+}
+
+.Career-Container::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.4); /* dark overlay */
+  z-index: 0;
+}
+
+.Career-Container h1 {
+  font-weight: bold;
+  font-size: 3rem; /* responsive font */
+  border-bottom: 3px solid white;
+  padding-bottom: 5px;
+  text-shadow: 2px 2px 6px rgba(0,0,0,0.6);
+  z-index: 1; /* above overlay */
+
+  /* Gradient color effect */
+  background: linear-gradient(90deg, #ff6ec4, #7873f5, #4ade80);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-size: 200% 200%;
+
+  /* Animation */
+  animation: gradientMove 5s ease infinite, fadeInUp 1s ease forwards;
+  opacity: 0; /* for fadeInUp */
+}
+
+/* Gradient animation */
+@keyframes gradientMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Fade in + move up */
+@keyframes fadeInUp {
+  0% { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
