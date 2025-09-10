@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
-import '../css/Topbar.css';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBars } from '@fortawesome/free-solid-svg-icons';
-import { Link } from 'react-router-dom';
-import { Home } from 'lucide-react';
+import React, { useState } from "react";
+import "../css/Topbar.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faBars, faTimes } from "@fortawesome/free-solid-svg-icons";
+import { Link } from "react-router-dom";
+import { Home } from "lucide-react";
 
 const Topbar = () => {
   const [isNavOpen, setIsNavOpen] = useState(false);
@@ -15,7 +15,6 @@ const Topbar = () => {
   };
 
   return (
-    <>
     <header className="topbar">
       <div className="topbar-container">
         {/* Logo */}
@@ -23,45 +22,74 @@ const Topbar = () => {
           <img src="/oxymora_logo (1).png" alt="Logo" className="logo" />
         </div>
 
-        {/* Hamburger for mobile */}
+        {/* Hamburger */}
         <div className="topbar-toggle" onClick={toggleNav}>
-          <FontAwesomeIcon icon={faBars} />
+          {isNavOpen ? (
+            <FontAwesomeIcon icon={faTimes} />
+          ) : (
+            <FontAwesomeIcon icon={faBars} />
+          )}
         </div>
 
-        {/* Navigation */}
-        <nav className={`topbar-nav ${isNavOpen ? 'active' : ''}`}>
-          <Link to="/home">Home</Link>
+        {/* Navigation Drawer */}
+        <nav className={`topbar-nav ${isNavOpen ? "active" : ""}`}>
+          <Link to="/home" onClick={toggleNav}>
+            Home
+          </Link>
 
+          {/* Dropdown - About Us */}
           <div
-            className={`dropdown ${activeDropdown === 'about' ? 'active' : ''}`}
-            onClick={() => toggleDropdown('about')}
+            className={`dropdown ${activeDropdown === "about" ? "active" : ""}`}
           >
-            <span className="dropbtn">About Us</span>
+            <span
+              className="dropbtn"
+              onClick={() => toggleDropdown("about")}
+            >
+              About Us
+            </span>
             <div className="dropdown-content">
               <div className="submenu">
                 <span>About</span>
-                <Link to="/about/mission">Mission</Link>
-                <Link to="/about/vision">Vision</Link>
-                <Link to="/about/core-team">Core Team</Link>
+                <Link to="/about/mission" onClick={toggleNav}>
+                  Mission
+                </Link>
+                <Link to="/about/vision" onClick={toggleNav}>
+                  Vision
+                </Link>
+                <Link to="/about/core-team" onClick={toggleNav}>
+                  Core Team
+                </Link>
               </div>
               <div className="submenu">
                 <span>Media</span>
-                <Link to="/about/office-gallery">Office Gallery</Link>
+                <Link to="/about/office-gallery" onClick={toggleNav}>
+                  Office Gallery
+                </Link>
               </div>
             </div>
           </div>
-          <Link to="/services">Services</Link>
-          <Link to="/products">Products</Link>
-          <Link to="/projects">Projects</Link>
-          <Link to="/work">Work</Link>
-          <Link to="/career">Career</Link>
-          <Link to="/contact">Contact Us</Link>
-         
 
+          <Link to="/services" onClick={toggleNav}>
+            Services
+          </Link>
+          <Link to="/products" onClick={toggleNav}>
+            Products
+          </Link>
+          <Link to="/projects" onClick={toggleNav}>
+            Projects
+          </Link>
+          <Link to="/work" onClick={toggleNav}>
+            Work
+          </Link>
+          <Link to="/career" onClick={toggleNav}>
+            Career
+          </Link>
+          <Link to="/contact" onClick={toggleNav}>
+            Contact Us
+          </Link>
         </nav>
       </div>
     </header>
-    </>
   );
 };
 

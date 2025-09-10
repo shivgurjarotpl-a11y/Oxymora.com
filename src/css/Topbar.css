@@ -1,68 +1,47 @@
-/* Topbar Container */
+/* Topbar Base */
 .topbar {
-  background-color: rgb(255, 255, 255);
-  box-shadow: 0 2px 2px rgba(170, 169, 169, 0.1);
-  padding: 10px 0px;
   width: 100%;
-  position: fixed;
-  z-index: 100;
+  background: #ffffff;
+  border-bottom: 1px solid #e5e7eb;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
 }
 
 .topbar-container {
   max-width: 1200px;
-  margin: 0 ;
+  margin: 0 auto;
+  padding: 0.75rem 1rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  flex-wrap: wrap;
 }
 
 /* Logo */
 .topbar-logo img {
-  height: 40px;
-  width: auto;
+  height: 42px;
 }
 
-/* Navigation */
+/* Nav Desktop */
 .topbar-nav {
   display: flex;
-  gap: 20px;
+  gap: 1.5rem;
   align-items: center;
-  transition: all 0.3s ease;
 }
 
 .topbar-nav a,
 .dropbtn {
-  position: relative;
+  color: #374151;
   text-decoration: none;
-  color: #000;
   font-weight: 500;
-  padding: 8px 10px;
-  transition: color 0.3s;
   cursor: pointer;
-}
-
-/* Hover underline */
-.topbar-nav a::after,
-.dropbtn::after {
-  content: "";
-  position: absolute;
-  width: 0%;
-  height: 2px;
-  left: 0;
-  bottom: 0;
-    background: linear-gradient(to bottom right, #2196f3, #0d47a1);
-  transition: width 0.3s ease;
+  transition: color 0.2s ease;
 }
 
 .topbar-nav a:hover,
 .dropbtn:hover {
-  color: linear-gradient(to bottom right, #2196f3, #0d47a1);
-}
-
-.topbar-nav a:hover::after,
-.dropbtn:hover::after {
-  width: 100%;
+  color: #2563eb;
 }
 
 /* Dropdown */
@@ -71,117 +50,101 @@
 }
 
 .dropdown-content {
-  display: flex;
-  flex-direction: column;
-  opacity: 0;
-  visibility: hidden;
-  transform: translateY(10px);
-  transition: all 0.3s ease;
   position: absolute;
-  background: rgba(255, 255, 255);
-  backdrop-filter: blur(2px);
-  top: 40px;
+  top: 100%;
   left: 0;
-  padding: 12px 20px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-  min-width: 220px;
-  gap: 20px;
-  z-index: 999;
-}
-
-.dropdown:hover .dropdown-content {
-  opacity: 1;
-  visibility: visible;
-  transform: translateY(0);
-}
-
-.submenu {
-  display: flex;
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 6px;
+  padding: 0.75rem 1rem;
+  display: none;
   flex-direction: column;
+  min-width: 180px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  z-index: 100;
 }
 
-.submenu span {
-  font-weight: bold;
-  color:linear-gradient(to bottom right, #2196f3, #0d47a1);
-  margin-bottom: 6px;
-}
-
-.submenu a {
-  color: #333;
-  text-decoration: none;
-  padding: 4px 0;
-  transition: color 0.3s;
-}
-
-.submenu a:hover {
-  color: linear-gradient(to bottom right, #2196f3, #0d47a1);
-}
-
-/* WhatsApp Icon */
-/* .whatsapp-icon {
+.dropdown.active .dropdown-content {
   display: flex;
-  align-items: center;
-  margin-left: 20px;
-  font-size: 24px;
-  color: #25D366;
-  transition: transform 0.3s ease;
 }
 
-.whatsapp-icon:hover {
-  transform: scale(1.2);
-  color: #1ebe5d;
-} */
+/* Submenu */
+.submenu {
+  margin-bottom: 0.75rem;
+}
+.submenu span {
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  display: block;
+  color: #6b7280;
+}
+.submenu a {
+  display: block;
+  padding: 0.3rem 0;
+  color: #374151;
+  font-size: 0.9rem;
+}
+.submenu a:hover {
+  color: #2563eb;
+}
 
-/* Hamburger Toggle: hidden by default */
+/* Hamburger */
 .topbar-toggle {
   display: none;
+  font-size: 1.5rem;
+  cursor: pointer;
 }
 
-/* Responsive for Mobile */
+/* ============ Responsive ============ */
 @media (max-width: 768px) {
-  .topbar-container {
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 10px;
-  }
-
-  /* Show toggle only on mobile */
+  /* Hamburger visible */
   .topbar-toggle {
     display: block;
-    font-size: 24px;
-    cursor: pointer;
-    margin-left: auto;
+    z-index: 1100;
   }
 
+  /* Drawer menu */
   .topbar-nav {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    height: 100vh;
+    width: 75%;
+    background: #ffffff;
     flex-direction: column;
-    gap: 10px;
-    width: 100%;
-    display: none; /* hidden by default */
+    align-items: flex-start;
+    padding: 2rem 1.5rem;
+    gap: 1rem;
+    transition: right 0.3s ease;
+    box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
   }
 
   .topbar-nav.active {
-    display: flex;
+    right: 0;
   }
 
-  /* Mobile dropdown */
+  /* Links full width */
+  .topbar-nav a,
+  .dropbtn {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    font-size: 1rem;
+    text-align: left;
+    border-radius: 6px;
+  }
+
+  /* Dropdown becomes accordion */
   .dropdown-content {
-    display: none;
     position: static;
-    transform: none;
-    opacity: 1;
-    visibility: visible;
-    background: rgba(255, 255, 255, 0.95);
+    border: none;
     box-shadow: none;
-    flex-direction: column;
-    padding-left: 10px;
+    padding: 0.5rem 1rem;
+    margin-left: 0.5rem;
+    display: none;
   }
 
   .dropdown.active .dropdown-content {
-    display: flex;
-  }
-
-  .submenu {
-    margin-bottom: 10px;
+    display: block;
   }
 }
