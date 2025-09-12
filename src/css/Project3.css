@@ -140,3 +140,15 @@
     justify-content: center;
   }
 }
+
+
+@media (max-width: 767px) {
+  .project3-left,
+  .project3-left.project3-animate,
+  .project3-logo-circle,
+  .project3-logo-circle.project3-animate {
+    transform: none !important;
+    opacity: 1 !important;
+    transition: none !important;
+  }
+}
