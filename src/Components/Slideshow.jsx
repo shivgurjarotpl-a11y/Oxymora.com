@@ -1,20 +1,11 @@
 import React, { useState, useEffect } from "react";
-// import Topbar from '../Components/Topbar';
-import "../css/Slideshow.css";
 import { FaArrowRight, FaArrowLeft } from "react-icons/fa";
+import "../css/Slideshow.css";
 
 const Slideshow = ({ autoPlay = true, autoPlayInterval = 6000 }) => {
   const slides = [
-    {
-      type: "video",
-      src: "/videos/video6.mp4",
-      text: "Technology for Smart Living",
-    },
-    {
-      type: "video",
-      src: "/videos/video7.mp4",
-      text: "Empowering Future Together",
-    },
+    { type: "video", src: "/videos/video6.mp4", text: "Technology for Smart Living" },
+    { type: "video", src: "/videos/video7.mp4", text: "Empowering Future Together" },
   ];
 
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -31,7 +22,7 @@ const Slideshow = ({ autoPlay = true, autoPlayInterval = 6000 }) => {
       { threshold: 0.3 }
     );
 
-    const elements = document.querySelectorAll(".scroll-reveal");
+    const elements = document.querySelectorAll(".custom-scroll-reveal");
     elements.forEach((el) => observer.observe(el));
 
     return () => observer.disconnect();
@@ -45,21 +36,14 @@ const Slideshow = ({ autoPlay = true, autoPlayInterval = 6000 }) => {
     return () => clearInterval(interval);
   }, [autoPlay, autoPlayInterval, slides.length]);
 
-  const nextSlide = () => {
-    setCurrentSlide((prev) => (prev + 1) % slides.length);
-  };
-
-  const prevSlide = () => {
-    setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
-  };
+  const nextSlide = () => setCurrentSlide((prev) => (prev + 1) % slides.length);
+  const prevSlide = () => setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
 
   return (
-    <div className="slideshow">
-      {/* <Topbar /> */}
-
-      <div className="slide">
+    <div className="custom-slideshow">
+      <div className="custom-slide">
         {slides[currentSlide].type === "image" ? (
-          <img src={slides[currentSlide].src} alt="" />
+          <img src={slides[currentSlide].src} alt={slides[currentSlide].text} />
         ) : (
           <video
             src={slides[currentSlide].src}
@@ -67,39 +51,38 @@ const Slideshow = ({ autoPlay = true, autoPlayInterval = 6000 }) => {
             muted
             loop
             playsInline
-            className="background-video"
+            className="custom-background-video"
           />
         )}
-        {/* Prev/Next Navigation Buttons */}
-        <button className="nav-btn left" onClick={prevSlide}>
+
+        {/* Prev/Next Buttons */}
+        <button className="custom-nav-btn left" onClick={prevSlide}>
           <FaArrowLeft />
         </button>
-        <button className="nav-btn right" onClick={nextSlide}>
+        <button className="custom-nav-btn right" onClick={nextSlide}>
           <FaArrowRight />
         </button>
 
         {slides[currentSlide].text && (
-          <div className={`overlay-text slide-${currentSlide}`}>
-            {/* Text Animation */}
+          <div className={`custom-overlay slide-${currentSlide}`}>
             <div
-              className="animated-text"
+              className="custom-animated-text"
               key={`text-${slides[currentSlide].text}`}
             >
               {slides[currentSlide].text.split("").map((char, i) => (
                 <span
                   key={i}
                   style={{ animationDelay: `${i * 0.05}s` }}
-                  className="fade-char"
+                  className="custom-fade-char"
                 >
                   {char === " " ? "\u00A0" : char}
                 </span>
               ))}
             </div>
 
-            {/* Button Animation */}
-            <button className="more-btn" key={`btn-${currentSlide}`}>
+            <button className="custom-more-btn" key={`btn-${currentSlide}`}>
               MORE{" "}
-              <span className="arrow-icon">
+              <span className="custom-arrow-icon">
                 <FaArrowRight />
               </span>
             </button>
@@ -107,11 +90,11 @@ const Slideshow = ({ autoPlay = true, autoPlayInterval = 6000 }) => {
         )}
       </div>
 
-      <div className="slide-indicators">
+      <div className="custom-slide-indicators">
         {slides.map((_, index) => (
           <span
             key={index}
-            className={`dot ${index === currentSlide ? "active" : ""}`}
+            className={`custom-dot ${index === currentSlide ? "active" : ""}`}
             onClick={() => setCurrentSlide(index)}
           ></span>
         ))}

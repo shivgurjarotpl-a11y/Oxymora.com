@@ -1,5 +1,10 @@
 .main-content {
   position: relative;
   z-index: 1;
-  padding-top: calc(700px);
+  padding-top: calc(70vh);
 }
+/* @media (max-width: 576px) {
+.main-content {
+  padding-top: calc(60vh);
+}
+  } */

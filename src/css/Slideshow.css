@@ -1,121 +1,173 @@
-.slideshow {
-  margin: 0px;
-  padding: 0px;
-  width: 100%;
-  height: 700px;
-  overflow: hidden;
-  position:fixed;
-   z-index: 0;
+/* ---------------------------
+   Full responsive Slideshow CSS
+   - preserves fadeIn & bounceUp animations
+   - responsive overlay + touch-friendly button
+   - supports two overlay modes:
+       1) Centered mode (default)
+       2) Bottom mode (add data-overlay="bottom" to .custom-slideshow)
+   --------------------------- */
+
+/* Root variables (adjust easily) */
+:root{
+  --slideshow-height: 80vh;
+  --overlay-max-width: 1100px;
+  --overlay-gap-min: 0.5rem;
+  --overlay-gap-max: 1.5rem;
+  --overlay-translateY-desktop: -15%; /* how high above center */
+  --overlay-translateY-tablet: -12%;
+  --overlay-translateY-mobile: -8%;
+  --overlay-bottom-offset: 30%; /* used for bottom mode */
+  --button-min-touch: 44px;
 }
 
-.slide img,
-.slide video {
+/* General Slideshow Container */
+.custom-slideshow {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: var(--slideshow-height);
+  overflow: hidden;
+  position: fixed; /* change to relative if you want slideshow to scroll with page */
+  top: 0;
+  left: 0;
+  z-index: 0;
+}
+
+/* Slide wrapper - helps positioning children */
+.custom-slide {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+/* Slide Media (image/video) */
+.custom-slide img,
+.custom-slide video {
   margin: 0;
   padding: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
+  display: block;
 }
 
-.overlay-text {
+/* Ensure video sits behind overlays */
+.custom-background-video {
   position: absolute;
-  bottom: 40%;
+  top: 0;
+  left: 0;
   width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+  pointer-events: none; /* allow clicks to pass to overlays if needed */
+}
+
+/* ---------------------------
+   Overlay: responsive and centered by default
+   --------------------------- */
+.custom-overlay {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, var(--overlay-translateY, -15%));
+  width: min(92vw, var(--overlay-max-width));
+  max-width: var(--overlay-max-width);
+  padding: 0 1rem;
   text-align: center;
   color: white;
-  font-size: 4rem;
   font-family: "Funnel Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-weight: bold;
+  font-weight: 700;
   z-index: 2;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 20px;
-  padding: 0 20px;
-}
-.animated-text {
-  display: inline-block;
+  gap: clamp(var(--overlay-gap-min), 1.2vw, var(--overlay-gap-max));
+  font-size: clamp(1.125rem, 2.5vw + 0.5rem, 4rem);
+  pointer-events: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-.fade-char {
+/* Bottom-mode: to use it, set: <div class="custom-slideshow" data-overlay="bottom"> */
+.custom-slideshow[data-overlay="bottom"] .custom-overlay {
+  top: auto;
+  bottom: var(--overlay-bottom-offset);
+  transform: translateX(-50%); /* center horizontally, keep bottom placement */
+}
+
+/* ensure animated text wraps nicely and is readable */
+.custom-overlay .custom-animated-text {
+  display: inline-block;
+  max-width: 100%;
+  word-break: break-word;
+  hyphens: auto;
+  line-height: 1.02;
+  white-space: normal;
+}
+
+/* characters keep their animation but inherit responsive sizing */
+.custom-fade-char {
+  display: inline-block;
   opacity: 0;
-  animation: fadeIn 2.5s forwards;
-  display: inline-block;
+  animation: fadeIn 0.5s forwards; /* preserved */
+  font-size: inherit;
+  line-height: inherit;
 }
 
-
-.more-btn {
-  padding: 10px 20px;
-  font-size: 16px;
-  font-weight: 500;
+/* ---------------------------------------------------------
+   MORE Button: responsive, accessible touch target & focus
+   --------------------------------------------------------- */
+.custom-more-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: clamp(0.45rem, 0.9vw, 0.95rem) clamp(0.9rem, 2vw, 1.2rem);
+  font-size: clamp(0.85rem, 1.2vw, 1.05rem);
+  min-height: var(--button-min-touch);       /* accessible touch target */
   color: #003366;
   background-color: #e0ecff;
   border: none;
-  border-radius: 8px;
+  border-radius: 10px;
   cursor: pointer;
+  transition: background-color 0.25s ease, transform 0.18s ease, box-shadow 0.18s ease;
+  z-index: 3;                                /* ensure above video */
   position: relative;
   overflow: hidden;
-  transition: background-color 0.3s ease, transform 0.3s ease;
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
 }
 
-.more-btn:hover {
-  background-color: #c1d8ff;
-  transform: translateY(-2px);
+/* hover & active affordances */
+.custom-more-btn:hover { transform: translateY(-2px); background-color: #c1d8ff; }
+.custom-more-btn:active { transform: translateY(0); }
+.custom-more-btn:focus {
+  outline: 3px solid rgba(0,51,102,0.18);
+  outline-offset: 3px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.12);
 }
 
-.more-btn:before {
+/* subtle sheen on hover (preserved) */
+.custom-more-btn::before {
   content: "";
   position: absolute;
   top: 0;
   left: -100%;
   width: 100%;
   height: 100%;
-  background: rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.14);
   transform: skewX(-20deg);
   transition: left 0.6s ease-in-out;
+  pointer-events: none;
 }
+.custom-more-btn:hover::before { left: 130%; }
 
-.more-btn:hover::before {
-  left: 130%;
-}
+/* arrow icon scales with text */
+.custom-arrow-icon { display: inline-block; font-size: 0.95em; }
 
-.arrow-icon {
-  display: inline-block;
-  font-size: 1rem;
-}
-
-.second-animation .fade-char {
-  animation-name: zoomFadeIn;
-  animation-duration: 0.7s;
-  animation-fill-mode: forwards;
-}
-
-@keyframes fadeInChar {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes zoomFadeIn {
-  from {
-    opacity: 0;
-    transform: scale(0.8);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-
-.slide-indicators {
+/* ---------------------------
+   Slide Indicators
+   --------------------------- */
+.custom-slide-indicators {
   position: absolute;
   bottom: 20px;
   left: 50%;
@@ -125,7 +177,7 @@
   z-index: 10;
 }
 
-.dot {
+.custom-dot {
   width: 12px;
   height: 12px;
   border-radius: 50%;
@@ -133,54 +185,116 @@
   cursor: pointer;
   transition: background 0.3s ease, transform 0.3s ease;
 }
+.custom-dot:hover { transform: scale(1.2); }
+.custom-dot.active { background: rgba(255,255,255,1); }
 
-.dot:hover {
-  transform: scale(1.2);
+/* ---------------------------
+   Navigation Buttons (prev/next)
+   --------------------------- */
+.custom-nav-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.4);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 45px;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 5;
+  transition: background 0.3s ease, transform 0.3s ease;
+  backdrop-filter: blur(2px);
+}
+.custom-nav-btn:hover {
+  background: rgba(0, 0, 0, 0.6);
+  transform: translateY(-50%) scale(1.06);
+}
+.custom-nav-btn.left { left: 20px; }
+.custom-nav-btn.right { right: 20px; }
+
+/* smaller nav buttons on small screens for better fit */
+.custom-nav-btn:focus {
+  outline: 3px solid rgba(255,255,255,0.15);
+  outline-offset: 3px;
 }
 
-.dot.active {
-  background: rgba(255, 255, 255, 1);
-}
-
-.overlay-text .fade-char {
-  animation: fadeIn 0.5s forwards;
-}
+/* ---------------------------
+   Keyframes (preserved)
+   --------------------------- */
 @keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(15px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(15px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 
-.scroll-reveal.revealed {
+.custom-scroll-reveal.revealed {
   animation: bounceUp 0.7s ease forwards;
 }
 
 @keyframes bounceUp {
-  0% {
-    opacity: 0;
-    transform: translateY(60px);
-  }
-  60% {
-    transform: translateY(-10px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  0%   { opacity: 0; transform: translateY(60px); }
+  60%  { transform: translateY(-10px); }
+  100% { opacity: 1; transform: translateY(0); }
 }
 
-@keyframes btnUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+/* ---------------------------
+   Responsive Breakpoints
+   --------------------------- */
+@media (max-width: 1200px) {
+  /* reduce overlay translate a little on large tablets/desktop narrow */
+  .custom-overlay { font-size: clamp(1rem, 2.3vw + 0.4rem, 3rem); }
+  .custom-overlay { transform: translate(-50%, var(--overlay-translateY, -12%)); }
 }
+
+@media (max-width: 768px) {
+  .custom-overlay {
+    font-size: clamp(1rem, 3.4vw, 2rem);
+    gap: 0.8rem;
+    transform: translate(-50%, var(--overlay-translateY, -12%));
+  }
+
+  .custom-nav-btn { width: 40px; height: 40px; }
+  .custom-more-btn { font-size: 14px; padding: 8px 16px; min-height: 44px; }
+}
+
+/* mobile portrait */
+@media (max-width: 480px) {
+  .custom-overlay {
+    font-size: clamp(0.95rem, 4.2vw, 1.6rem);
+    gap: 0.6rem;
+    transform: translate(-50%, var(--overlay-translateY, -8%));
+    width: min(94vw, 640px);
+  }
+
+  .custom-more-btn {
+    padding: 6px 12px;
+    font-size: 0.95rem;
+    min-height: 42px;
+  }
+
+  .custom-nav-btn { width: 35px; height: 35px; }
+  .custom-slide-indicators { bottom: 14px; }
+}
+
+/* very small screens */
+@media (max-width: 360px) {
+  .custom-overlay { top: 45%; transform: translate(-50%, var(--overlay-translateY, -6%)); font-size: 1.05rem; }
+  .custom-more-btn { min-height: 40px; padding: 6px 10px; }
+}
+
+/* ---------------------------
+   Accessibility / small polish
+   --------------------------- */
+/* make sure focusable elements are visible */
+.custom-more-btn, .custom-nav-btn, .custom-dot {
+  -webkit-tap-highlight-color: rgba(0,0,0,0.08);
+}
+
+/* if you use outline: none anywhere else, avoid losing keyboard focus cues */
+button:focus { outline-offset: 3px; }
+
+/* end */
+ 
