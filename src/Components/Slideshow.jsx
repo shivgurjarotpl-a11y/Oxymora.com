@@ -55,13 +55,13 @@ const Slideshow = ({ autoPlay = true, autoPlayInterval = 6000 }) => {
           />
         )}
 
-        {/* Prev/Next Buttons */}
-        <button className="custom-nav-btn left" onClick={prevSlide}>
+        Prev/Next Buttons
+        {/* <button className="custom-nav-btn left" onClick={prevSlide}>
           <FaArrowLeft />
         </button>
         <button className="custom-nav-btn right" onClick={nextSlide}>
           <FaArrowRight />
-        </button>
+        </button> */}
 
         {slides[currentSlide].text && (
           <div className={`custom-overlay slide-${currentSlide}`}>
