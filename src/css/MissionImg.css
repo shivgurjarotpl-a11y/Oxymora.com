@@ -1,5 +1,5 @@
 .M-Container {
-  height: 700px; 
+  height: 80vh; 
   width: 100%;
   background-image: url("/image/work.jpg"); /* apna image path */
   background-size: cover;
@@ -13,10 +13,12 @@
   text-align: center;
   color: white;
 
-  position: relative; /* fixed se relative kar diya, z-index properly kaam kare */
+  position: fixed; 
+  z-index: 0;
   overflow: hidden;
 }
 
+/* Dark overlay */
 .M-Container::before {
   content: "";
   position: absolute;
@@ -66,9 +68,10 @@
   line-height: 1.6;
 }
 
-/* Responsive */
+/* Tablet */
 @media (max-width: 768px) {
   .M-Container {
+    height: 60vh; 
     padding: 40px 15px;
   }
 
@@ -77,16 +80,19 @@
   }
 }
 
+/* Mobile */
 @media (max-width: 480px) {
   .M-Container {
+    height: 50vh; /* smaller height for phones */
     padding: 30px 10px;
   }
 
   .M-Container h1 {
-    font-size: 1.8rem;
+    font-size: 1.6rem; /* smaller text */
+    line-height: 1.2;
   }
 
   .M-Container h2 {
-    font-size: 1rem;
+    font-size: 0.9rem; /* smaller subtitle */
   }
 }

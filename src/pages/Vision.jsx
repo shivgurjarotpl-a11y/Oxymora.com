@@ -3,6 +3,7 @@ import VisionImg from '../Components/VisionImg'
 import VisionSection from '../Components/VisionSection'
 import "../css/Vision.css";
 import Footer from '../Components/Footer';
+import FloatingButtons from '../Components/FloatingButtons';
 
 
 const Vision = () => {
@@ -12,6 +13,7 @@ const Vision = () => {
       <div className='viision-Contanior'>
           <VisionSection/>
           <Footer/>
+          <FloatingButtons/>
       </div>
     </div>
   )

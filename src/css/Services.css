@@ -1,5 +1,17 @@
+
+
+
 .s-contanior{
-    position: relative;
+        position: relative;
   z-index: 1;
-  padding-top: calc(700px)
+  padding-top: calc(80vh)
+}
+
+@media (max-width: 768px) {
+.s-contanior{
+        position: relative;
+  z-index: 1;
+  padding-top: calc(50vh)
+}
+
 }

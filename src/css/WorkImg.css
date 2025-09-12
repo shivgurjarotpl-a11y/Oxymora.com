@@ -1,24 +1,25 @@
+
 .W-Container {
-  height: 700px; /* responsive height */
+  height: 80vh; 
   width: 100%;
-  background-image: url("/image/work.jpg");
+  background-image: url("/image/work.jpg"); /* apna image path */
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  
+
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   text-align: center;
   color: white;
-  
-  position: fixed; /* better than fixed */
+
+  position: fixed; 
   z-index: 0;
-
-
+  overflow: hidden;
 }
 
+/* Dark overlay */
 .W-Container::before {
   content: "";
   position: absolute;
@@ -26,47 +27,76 @@
   left: 0;
   height: 100%;
   width: 100%;
-  background-color: rgba(0, 0, 0, 0.4); /* dark overlay */
+  background-color: rgba(0, 0, 0, 0.4);
   z-index: 0;
 }
 
 .W-Container h1 {
   font-weight: bold;
-  font-size: 3rem; /* responsive font */
+  font-size: clamp(1.8rem, 6vw, 3rem); 
   border-bottom: 3px solid white;
   padding-bottom: 5px;
   text-shadow: 2px 2px 6px rgba(0,0,0,0.6);
-  z-index: 1; /* above overlay */
+  z-index: 1;
 
-  /* Gradient color effect */
   background: linear-gradient(90deg, #ff6ec4, #7873f5, #4ade80);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-size: 200% 200%;
 
-  /* Animation */
   animation: gradientMove 5s ease infinite, fadeInUp 1s ease forwards;
-  opacity: 0; /* for fadeInUp */
+  opacity: 0;
 }
 
-/* Gradient animation */
 @keyframes gradientMove {
   0% { background-position: 0% 50%; }
   50% { background-position: 100% 50%; }
   100% { background-position: 0% 50%; }
 }
 
-/* Fade in + move up */
 @keyframes fadeInUp {
   0% { opacity: 0; transform: translateY(20px); }
   100% { opacity: 1; transform: translateY(0); }
 }
 
-
 .W-Container h2 {
   font-weight: 500;
-  font-size: 1.3rem; 
-  margin-top: 20px;
-  z-index: 1;
+  font-size: clamp(1rem, 4vw, 1.3rem);
+  margin-top: 15px;
   text-shadow: 2px 2px 6px rgba(0,0,0,0.6);
+  animation: fadeInUp 1.2s ease forwards;
+  opacity: 0;
+  line-height: 1.6;
 }
+
+/* Tablet */
+@media (max-width: 768px) {
+  .W-Container {
+    height: 60vh; 
+    padding: 40px 15px;
+  }
+
+  .W-Container h1 {
+    border-bottom: none; 
+  }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+  .W-Container {
+    height: 50vh; /* smaller height for phones */
+    padding: 30px 10px;
+  }
+
+  .W-Container h1 {
+    font-size: 1.6rem; /* smaller text */
+    line-height: 1.2;
+  }
+
+  .W-Container h2 {
+    font-size: 0.9rem; /* smaller subtitle */
+  }
+}
+
+
+
