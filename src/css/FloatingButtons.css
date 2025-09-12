@@ -1,6 +1,6 @@
 .floating-buttons {
   position: fixed;
-  top: 50%;
+  top: 70%;
   right: 0;
   transform: translateY(-50%);
   display: flex;
@@ -13,11 +13,11 @@
 }
 
 .contact-btn {
-  pointer-events: auto; /* 👈 make buttons clickable again */
+  pointer-events: auto;
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  width: 170px;
+  width: 160px;
   padding: 12px 20px;
   color: white;
   font-weight: 500;
@@ -41,7 +41,7 @@
 /* Icons */
 .contact-btn svg {
   margin-right: 12px;
-  font-size: 22px;
+  font-size: 15px;
   flex-shrink: 0;
 }
 
