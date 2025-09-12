@@ -12,6 +12,8 @@ import Project6 from '../Components/Project6';
 import Project7 from '../Components/Project7';
 import Project8 from '../Components/Project8';
 import Project9 from '../Components/Project9';
+import Footer from '../Components/Footer';
+import FloatingButtons from '../Components/FloatingButtons';
 
 const Work = () => {
   const [activeCategory, setActiveCategory] = useState("all");
@@ -49,6 +51,8 @@ const Work = () => {
         {displayedProjects.map(proj => (
           <div key={proj.id}>{proj.component}</div>
         ))}
+        <Footer/>
+        <FloatingButtons/>
       </div>
     </div>
   );
