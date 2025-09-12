@@ -63,7 +63,7 @@
     justify-content: center;
     transform: none;   /* no slide */
     border-radius: 50%;
-    padding: 20px;
+    padding: 15px;
   }
 
   .contact-btn svg {
