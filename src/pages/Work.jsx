@@ -12,6 +12,8 @@ import Project6 from '../Components/Project6';
 import Project7 from '../Components/Project7';
 import Project8 from '../Components/Project8';
 import Project9 from '../Components/Project9';
+import Project10 from '../Components/Project10';
+
 import Footer from '../Components/Footer';
 import FloatingButtons from '../Components/FloatingButtons';
 
@@ -29,6 +31,8 @@ const Work = () => {
     { id: 7, type: "application", component: <Project7 /> },
     { id: 8, type: "application", component: <Project8 /> },
     { id: 9, type: "website", component: <Project9 /> },
+    { id: 10, type: "website", component: <Project10 /> },
+
   ];
 
   // Filter projects based on active category

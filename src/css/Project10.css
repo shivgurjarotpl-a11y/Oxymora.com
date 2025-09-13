@@ -1,66 +1,69 @@
-.project6-wrapper {
+.project10-wrapper {
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 60px 8%;
   gap: 40px;
-  background: #a3b9a2;
+  background: #2f1d7b;
   flex-wrap: wrap;
 }
 
-.project6-left {
+.project10-left {
   flex: 1;
   color: #fff;
   max-width: 500px;
 }
 
-.project6-logo-circle {
+.project10-logo-circle {
   width: 80px;
   height: 80px;
   background: #fff;
   color: #000;
   border-radius: 50%;
-  border: 3px solid black;
   display: flex;
   align-items: center;
   justify-content: center;
   font-weight: bold;
   margin-bottom: 20px;
-  padding: 3px;
+  overflow: hidden;
 }
 
-.project6-left h2 {
+.project10-logo-circle img {
+  display: block;
+}
+
+.project10-left h2 {
   font-size: 2rem;
   margin-bottom: 20px;
 }
 
-.project6-left p {
+.project10-left p {
   line-height: 1.6;
   margin-bottom: 30px;
   font-size: 15px;
 }
 
-.project6-stats {
+.project10-stats {
   display: flex;
   gap: 30px;
   margin-bottom: 30px;
 }
 
-.project6-stats h3 {
+.project10-stats h3 {
   font-size: 1.5rem;
   font-weight: bold;
 }
 
-.project6-stats p {
+.project10-stats p {
   font-size: 14px;
 }
 
-.project6-buttons {
+.project10-buttons {
   display: flex;
   gap: 15px;
 }
 
-.project6-btn-primary {
+.project10-btn-primary {
   background: #fff;
   color: #f98c3e;
   border: none;
@@ -71,11 +74,11 @@
   transition: 0.3s;
 }
 
-.project6-btn-primary:hover {
+.project10-btn-primary:hover {
   background: #f0f0f0;
 }
 
-.project6-btn-secondary {
+.project10-btn-secondary {
   background: transparent;
   border: 2px solid #fff;
   color: #fff;
@@ -85,12 +88,12 @@
   transition: 0.3s;
 }
 
-.project6-btn-secondary:hover {
+.project10-btn-secondary:hover {
   background: #fff;
   color: #f98c3e;
 }
 
-.project6-right {
+.project10-right {
   flex: 1;
   display: flex;
   justify-content: center;
@@ -98,52 +101,52 @@
   min-height: 500px;
 }
 
-.project6-phone-img {
- max-width: 1200px; 
-  width: 110%;  
+.project10-phone-img {
+  max-width: 550px;
+  width: 100%;
 }
 
 /* ✅ Animation states */
-.project6-hidden-left {
+.project10-hidden-left {
   opacity: 0;
-  transform: translateX(100px);
+  transform: translateX(-100px);
   transition: all 2.8s ease;
 }
 
-.project6-hidden-bottom {
+.project10-hidden-bottom {
   opacity: 0;
   transform: translateY(100px);
   transition: all 2.8s ease;
 }
 
-.project6-animate {
+.project10-animate {
   opacity: 1;
   transform: translate(0, 0);
 }
 
 /* ✅ Responsive */
 @media (max-width: 992px) {
-  .project6-wrapper {
+  .project10-wrapper {
     flex-direction: column;
     text-align: center;
   }
 
-  .project6-stats {
+  .project10-stats {
     justify-content: center;
   }
 
-  .project6-buttons {
+  .project10-buttons {
     justify-content: center;
   }
 }
 
-
 @media (max-width: 767px) {
-  .project6-left,
-  .project6-left.project6-animate,
-  .project6-logo-circle,
-  .project6-logo-circle.project6-animate {
+  .project10-left,
+  .project10-left.project10-animate,
+  .project10-logo-circle,
+  .project10-logo-circle.project10-animate {
     transform: none !important;
     opacity: 1 !important;
     transition: none !important;
   }
+}

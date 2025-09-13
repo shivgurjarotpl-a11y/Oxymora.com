@@ -12,7 +12,7 @@ const Project2 = () => {
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            entry.target.classList.add("project2-animate"); // ✅ corrected
+            entry.target.classList.add("project2-animate"); 
           }
         });
       },
